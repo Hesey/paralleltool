@@ -1,6 +1,7 @@
 package net.hesey.paralleltool.pool;
 
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -11,10 +12,18 @@ import java.util.concurrent.TimeUnit;
  * 
  */
 public class BlockingThreadPool {
-	public static int THREAD_NUM = 30;
-	public static int QUEUE_CAPACITY = 1000;
+	public static final int DEFAULT_THREAD_NUM = 30;
+	public static final int DEFAULT_QUEUE_CAPACITY = 1000;
 
-	public static ThreadPoolExecutor newInstance() {
-		return new ThreadPoolExecutor(THREAD_NUM, THREAD_NUM, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(QUEUE_CAPACITY), new BlockingRejectedExecutionHandler());
+	public static ExecutorService newInstance() {
+		return newInstance(DEFAULT_THREAD_NUM);
+	}
+
+	public static ExecutorService newInstance(int threadNum) {
+		return newInstance(threadNum, DEFAULT_QUEUE_CAPACITY);
+	}
+
+	public static ExecutorService newInstance(int threadNum, int queueCapacity) {
+		return new ThreadPoolExecutor(threadNum, threadNum, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(queueCapacity), new BlockingRejectedExecutionHandler());
 	}
 }

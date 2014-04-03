@@ -9,7 +9,7 @@ For now it supports to process `List`.
 - Process without Result return
 ```java
 List<Integer> list = Lists.newArrayList(65, 66, 67, 68, 69, 70);
-ListParallel.parallel(list, new Processor<Integer>() {
+ListParallel.parallel(list, new VoidProcessor<Integer>() {
 	@Override
 	public void process(Integer e) {
 		System.out.println(e + 1);

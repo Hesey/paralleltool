@@ -1,4 +1,4 @@
-package net.hesey.paralleltool;
+package net.hesey.paralleltool.processor;
 
 /**
  * Processor without Callback.
@@ -8,6 +8,6 @@ package net.hesey.paralleltool;
  * @author Hesey
  * 
  */
-public interface Processor<E> {
+public interface VoidProcessor<E> {
 	public void process(E e);
 }

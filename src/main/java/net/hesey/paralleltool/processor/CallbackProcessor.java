@@ -1,4 +1,4 @@
-package net.hesey.paralleltool;
+package net.hesey.paralleltool.processor;
 
 /**
  * Processor with Callback.
