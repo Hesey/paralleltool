@@ -25,3 +25,10 @@ List<Character> result = ListParallel.parallelWithCallback(list, new CallbackPro
 	}
 });
 ```
+
+- Thread Number Specify
+	- When execute CPU bound task, you should use `Runtime.getRuntime().availableProcessors() + 1` as thread number.
+
+```java
+ListParallel.parallel(list, voidProcessor, Runtime.getRuntime().availableProcessors() + 1);
+```
